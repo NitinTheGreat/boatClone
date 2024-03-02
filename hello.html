@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .slider-container {
+            width: 100%;
+            /* overflow: hidden; */
+            position: relative;
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease; /* Smooth slide transition */
+        }
+
+        .slider img {
+            width: 25%; /* Adjust to show 5 images at a time */
+            object-fit: cover;
+        }
+
+        /* Navigation buttons */
+        .prev, .next {
+            cursor: pointer;
+            font-size: 24px;
+            margin: 0 10px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 5px;
+            border-radius: 50%;
+        }
+
+        .prev {
+            left: 0;
+        }
+
+        .next {
+            right: 0;
+        }
+
+        /* Hide navigation buttons on small screens */
+        @media (max-width: 600px) {
+            .prev, .next {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slider-container">
+        <div class="slider">
+            <img src="https://www.boat-lifestyle.com/cdn/shop/files/quinn_N8V0FmOXVCG4QfYvPSp1w.jpg" alt="Smartwatches">
+            <img src="https://www.boat-lifestyle.com/cdn/shop/files/quinn_9O6xvZXZ3kYLbUbtsnj4S.jpg" alt="Wireless Earbuds">
+            <img src="https://www.boat-lifestyle.com/cdn/shop/files/quinn_KXwTUL2r91fh5uAHqSyIH.jpg" alt="Neckbands">
+            <img src="https://www.boat-lifestyle.com/cdn/shop/files/quinn_v90hMzAEa585W2YTUR9UF.jpg" alt="Headphones">
+            <img src="https://www.boat-lifestyle.com/cdn/shop/files/quinn_FY7dfyFMiXzNTqSLFu2lV.jpg" alt="Speakers">
+        </div>
+        <div class="prev">❮</div>
+        <div class="next">❯</div>
+    </div>
+
+    <script>
+        const slider = document.querySelector('.slider');
+        const prevBtn = document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
+        let slideIndex = 0;
+
+        // Event listeners for navigation buttons
+        prevBtn.addEventListener('click', () => {
+            slideIndex--;
+            updateSlider();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            slideIndex++;
+            updateSlider();
+        });
+
+        // Function to update slider position
+        function updateSlider() {
+            slider.style.transform = `translateX(-${slideIndex * 20}%)`;
+        }
+    </script>
+</body>
+</html>
